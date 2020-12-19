@@ -92,7 +92,7 @@ for (let i = 0; i < 3; i++) {
 
 #### Jawaban: C
 
-Karena antrean peristiwa di JavaScript, fungsi callback `setTimeout` disebut _after_ loop telah dijalankan. Karena variabel `i` di loop pertama dideklarasikan menggunakan kata kunci` var`, nilai ini adalah global. Selama perulangan, kita menambah nilai ʻi` sebesar `1` setiap kali, menggunakan operator unary` ++ `. Pada saat fungsi callback `setTimeout` dipanggil,` i` sama dengan `3` di contoh pertama.
+Karena antrean peristiwa di JavaScript, fungsi callback `setTimeout` disebut _after_ loop telah dijalankan. Karena variabel `i` di loop pertama dideklarasikan menggunakan kata kunci` var`, nilai ini adalah global. Selama perulangan, kita menambah nilai `i` sebesar `1` setiap kali, menggunakan operator unary` ++ `. Pada saat fungsi callback `setTimeout` dipanggil,` i` sama dengan `3` di contoh pertama.
 
 Pada perulangan kedua, variabel `i` dideklarasikan menggunakan kata kunci` let`: variabel yang dideklarasikan dengan kata kunci `let` (dan` const`) memiliki cakupan blok (blok adalah apa saja di antara `{}`). Selama setiap iterasi, `i` akan memiliki nilai baru, dan setiap nilai dicakup di dalam loop.
 </p>
@@ -186,7 +186,7 @@ const mouse = {
 #### Jawaban: A
 Pada JavaScript, semua kunci objek adalah string (kecuali jika itu berupa Simbol). Meskipun kita mungkin tidak mengetiknya sebagai string, tetap saja mereka selalu berubah menjadi string didalamnya.
 
-JavaScript menginterpretasikan (atau membuka) pernyataan-pernyataan. Saat kita menggunakan notasi kurung siku, ia melihat kurung buka pertama `[` dan terus berjalan sampai menemukan kurung tutup `]`. Baru setelah itu akan mengevaluasi penyataannya. `mouse[bird.size]`: Pertama, ini mengevaluasi `bird.size`, yang mana `"small"`. `mouse["small"]` mengembalikan nilai `true`. 
+JavaScript menginterpretasikan (atau membuka) pernyataan-pernyataan. Saat kita menggunakan notasi kurung siku, ia melihat kurung buka pertama `[` dan terus berjalan sampai menemukan kurung tutup `]`. Baru setelah itu akan mengevaluasi pernyataannya. `mouse[bird.size]`: Pertama, ini mengevaluasi `bird.size`, yang mana `"small"`. `mouse["small"]` mengembalikan nilai `true`.
 
 Namun, dengan notasi dot (.), hal ini tidak terjadi. `mouse` tidak memiliki kunci dengan nama `bird`, yang menyebabkan `mouse.bird` bernilai `undefined`. Kemudian, kita meminta `size` untuk menggunakan notasi dot (.): `mouse.bird.size`. Kita mengetahui bahwa `mouse.bird` bernilai `undefined`, yang sebenarnya kita minta adalah `undefined.size`. Yang mana hal ini tidak valid, dan akan memunculkan kesalahan yang mirip dengan `Cannot read property "size" of undefined`.
 
@@ -379,7 +379,7 @@ console.log(member.getFullName());
 
 #### Jawaban: A
 
-Anda tidak dapat menambahkan properti ke constructor seperti yang Anda lakukan dengan objek biasa. Jika Anda ingin menambahkan fitur ke semua objek sekaligus, Anda harus menggunakan prototipe sebagai gantinya. Jadi dalam kasus ini,
+Anda tidak dapat menambahkan properti ke constructor seperti yang Anda lakukan dengan objek biasa. Jika Anda ingin menambahkan fitur ke semua objek sekaligus, Anda harus menggunakan prototipe sebagai gantinya. Jadi dalam kasus ini:
 
 ```js
 Person.prototype.getFullName = function() {
@@ -387,7 +387,7 @@ Person.prototype.getFullName = function() {
 };
 ```
 
-akan membuat `member.getFullName()` berfungsi. Mengapa ini bermanfaat? Katakanlah kita menambahkan metode ini ke konstruktor itu sendiri. Mungkin tidak setiap instance `Person` membutuhkan metode ini. Ini akan membuang banyak ruang memori, karena mereka masih memiliki properti itu, yang mengambil ruang memori untuk setiap instance. Sebaliknya, jika kita hanya menambahkannya ke prototipe, kita hanya memilikinya di satu tempat di memori, namun mereka semua memiliki akses ke sana!
+Akan membuat `member.getFullName()` berfungsi. Mengapa ini bermanfaat? Katakanlah kita menambahkan metode ini ke konstruktor itu sendiri. Mungkin tidak setiap instance `Person` membutuhkan metode ini. Ini akan membuang banyak ruang memori, karena mereka masih memiliki properti itu, yang mengambil ruang memori untuk setiap instance. Sebaliknya, jika kita hanya menambahkannya ke prototipe, kita hanya memilikinya di satu tempat di memori, namun mereka semua memiliki akses ke sana!
 
 </p>
 </details>
@@ -419,16 +419,16 @@ console.log(sarah);
 
 #### Jawaban: A
 
-For `sarah`, we didn't use the `new` keyword. When using `new`, it refers to the new empty object we create. However, if you don't add `new` it refers to the **global object**!
+Pada `sarah`, kita tidak menggunakan kata kunci `new`. Saat menggunakan `new`, Ini mengacu pada object kosong yang kita buat. Namun, jika Anda tidak menambahkan `new` ini merujuk pada **global object**!
 
-We said that `this.firstName` equals `"Sarah"` and `this.lastName` equals `"Smith"`. What we actually did, is defining `global.firstName = 'Sarah'` and `global.lastName = 'Smith'`. `sarah` itself is left `undefined`, since we don't return a value from the `Person` function.
+Kita tahu bahwa `this.firstName` setara dengan `"Sarah"` dan `this.lastName` sama dengan `"Smith"`. Apa yang sebenarnya kami lakukan adalah mendefinisikan `global.firstName = 'Sarah'` dan `global.lastName = 'Smith'`. `sarah` sendiri dibiarkan `undefined`, karena kita tidak mengembalikan nilai dari fungsi `Person`.
 
 </p>
 </details>
 
 ---
 
-###### 13. What are the three phases of event propagation?
+###### 13. Apa tiga fase dari event propagation?
 
 - A: Target > Capturing > Bubbling
 - B: Bubbling > Target > Capturing
@@ -440,7 +440,7 @@ We said that `this.firstName` equals `"Sarah"` and `this.lastName` equals `"Smit
 
 #### Jawaban: D
 
-During the **capturing** phase, the event goes through the ancestor elements down to the target element. It then reaches the **target** element, and **bubbling** begins.
+Selama fase **capturing**, event melewati elemen ancestor hingga ke elemen target. Kemudian mencapai element **target**, dan **bubbling** dimulai.
 
 <img src="https://i.imgur.com/N18oRgd.png" width="200">
 
@@ -459,7 +459,7 @@ During the **capturing** phase, the event goes through the ancestor elements dow
 
 #### Jawaban: B
 
-All objects have prototypes, except for the **base object**. The base object is the object created by the user, or an object that is created using the `new` keyword. The base object has access to some methods and properties, such as `.toString`. This is the reason why you can use built-in JavaScript methods! All of such methods are available on the prototype. Although JavaScript can't find it directly on your object, it goes down the prototype chain and finds it there, which makes it accessible for you.
+Semua objek memiliki prototypes, kecuali **objek dasar**. Objek dasar adalah objek yang dibuat oleh pengguna, atau objek yang dibuat dengan menggunakan kata kunci `baru`. Objek dasar memiliki akses ke beberapa metode dan properti, seperti `.toString`. Inilah alasan mengapa Anda dapat menggunakan metode JavaScript bawaan! Semua metode tersebut tersedia di prototipe. Meskipun JavaScript tidak dapat menemukannya secara langsung di objek Anda, JavaScript berada di rantai prototipe dan menemukannya di sana, yang membuatnya dapat diakses untuk Anda.
 
 </p>
 </details>
@@ -486,9 +486,9 @@ sum(1, '2');
 
 #### Jawaban: C
 
-JavaScript is a **dynamically typed language**: we don't specify what types certain variables are. Values can automatically be converted into another type without you knowing, which is called _implicit type coercion_. **Coercion** is converting from one type into another.
+JavaScript adalah **Bahasa yang bersifat dinamis**: yang tidak menentukan jenis variabel tertentu. Values dapat secara otomatis diubah menjadi jenis lain tanpa Anda sadari, yang disebut _implicit type coercion_. **Coercion** adalah mengubah dari satu jenis ke jenis lainnya.
 
-In this example, JavaScript converts the number `1` into a string, in order for the function to make sense and return a value. During the addition of a numeric type (`1`) and a string type (`'2'`), the number is treated as a string. We can concatenate strings like `"Hello" + "World"`, so what's happening here is `"1" + "2"` which returns `"12"`.
+Pada contoh ini, JavaScript mengubah number `1` menjadi sebuah string, agar fungsi tersebut masuk akal dan mengembalikan nilai. Selama penambahan tipe numerik (`1`) dan tipe string (`'2'`), angka tersebut diperlakukan sebagai string. Kita bisa menggabungkan string seperti `"Hello" + "World"`, jadi yang terjadi di sini adalah `"1" + "2"` yang mengembalikan `"12"`.
 
 </p>
 </details>
@@ -514,17 +514,17 @@ console.log(number);
 
 #### Jawaban: C
 
-The **postfix** unary operator `++`:
+**Akhiran** operator unary `++`:
 
-1. Returns the value (this returns `0`)
-2. Increments the value (number is now `1`)
+1. Mengembalikan nilai (ini mengembalikan `0`)
+2. Menambahkan nilai (angkanya sekarang `1`)
 
-The **prefix** unary operator `++`:
+**Awalan** operator unary `++`:
 
-1. Increments the value (number is now `2`)
-2. Returns the value (this returns `2`)
+1. Menambah nilai (angkanya sekarang `2`)
+2. Mengembalikan nilai (ini mengembalikan `2`)
 
-This returns `0 2 2`.
+Ini mengembalikan `0 2 2`.
 
 </p>
 </details>
@@ -555,7 +555,7 @@ getPersonInfo`${person} is ${age} years old`;
 
 #### Jawaban: B
 
-If you use tagged template literals, the value of the first argument is always an array of the string values. The remaining arguments get the values of the passed expressions!
+Jika Anda menggunakan literal template yang diberi tag, nilai argumen pertama selalu berupa array bernilai string. Argumen yang tersisa mendapatkan nilai dari ekspresi yang diteruskan!
 
 </p>
 </details>
@@ -587,11 +587,11 @@ checkAge({ age: 18 });
 
 #### Jawaban: C
 
-When testing equality, primitives are compared by their _value_, while objects are compared by their _reference_. JavaScript checks if the objects have a reference to the same location in memory.
+Saat menguji persamaan, primitif dibandingkan dengan nilainya, sedangkan objek dibandingkan dengan referensinya. JavaScript memeriksa apakah objek memiliki referensi ke lokasi yang sama di memori.
 
-The two objects that we are comparing don't have that: the object we passed as a parameter refers to a different location in memory than the object we used in order to check equality.
+Dua objek yang kita bandingkan tidak memiliki itu: objek yang kita lewati sebagai parameter merujuk ke lokasi yang berbeda dalam memori dari objek yang kita gunakan untuk memeriksa persamaan.
 
-This is why both `{ age: 18 } === { age: 18 }` and `{ age: 18 } == { age: 18 }` return `false`.
+Inilah mengapa `{age: 18} === {age: 18}` dan `{age: 18} == {age: 18}` mengembalikan nilai `false`.
 
 </p>
 </details>
@@ -618,7 +618,7 @@ getAge(21);
 
 #### Jawaban: C
 
-The rest parameter (`...args`.) lets us "collect" all remaining arguments into an array. An array is an object, so `typeof args` returns `"object"`
+Parameter sisanya (`... args`.) Memungkinkan kita "mengumpulkan" semua argumen yang tersisa ke dalam sebuah array. Array adalah sebuah objek, jadi `typeof args` mengembalikan "objek"
 
 </p>
 </details>
@@ -647,7 +647,7 @@ getAge();
 
 #### Jawaban: C
 
-With `"use strict"`, you can make sure that you don't accidentally declare global variables. We never declared the variable `age`, and since we use `"use strict"`, it will throw a reference error. If we didn't use `"use strict"`, it would have worked, since the property `age` would have gotten added to the global object.
+Dengan `" use strict "`, Anda dapat memastikan bahwa Anda tidak mendeklarasikan variabel global secara tidak sengaja. Kita tidak pernah mendeklarasikan variabel `age`, dan karena kita menggunakan `" use strict "`, ini akan memunculkan kesalahan referensi. Jika kita tidak menggunakan `" use strict "`, ini akan berhasil, karena properti `age` akan ditambahkan ke objek global.
 
 </p>
 </details>
@@ -670,32 +670,32 @@ const sum = eval('10*10+5');
 
 #### Jawaban: A
 
-`eval` evaluates codes that's passed as a string. If it's an expression, like in this case, it evaluates the expression. The expression is `10 * 10 + 5`. This returns the number `105`.
+`eval` mengevaluasi kode yang berlalu sebagai string. Jika itu adalah ekspresi, seperti dalam kasus ini, itu mengevaluasi ekspresi. Ungkapannya adalah `10 * 10 + 5`. Ini kembali nomor `105`.
 
 </p>
 </details>
 
 ---
 
-###### 22. How long is cool_secret accessible?
+###### 22. Sampai berapa lama kah cool_secret dapat diakses?
 
 ```javascript
 sessionStorage.setItem('cool_secret', 123);
 ```
 
-- A: Forever, the data doesn't get lost.
-- B: When the user closes the tab.
-- C: When the user closes the entire browser, not only the tab.
-- D: When the user shuts off their computer.
+- A: Selamanya, data tersebut tidak akan hilang.
+- B: Saat pengguna menutup tab browser.
+- C: Saat pengguna menutup seluruh browser, tidak hanya tab.
+- D: Saat pengguna mematikan komputernya.
 
 <details><summary><b>Jawaban</b></summary>
 <p>
 
 #### Jawaban: B
 
-The data stored in `sessionStorage` is removed after closing the _tab_.
+Data yang disimpan di `sessionStorage` akan dihapus setelah menutup _tab_.
 
-If you used `localStorage`, the data would've been there forever, unless for example `localStorage.clear()` is invoked.
+Jika anda menggunakan `localStorage`, data tersebut akan tersimpan selamanya, kecuali misalnya _method_ `localStorage.clear()` dipanggil.
 
 </p>
 </details>
@@ -721,9 +721,9 @@ console.log(num);
 
 #### Jawaban: B
 
-With the `var` keyword, you can declare multiple variables with the same name. The variable will then hold the latest value.
+Dengan kata kunci `var`, anda dapat menyatakan beberapa variabel dengan nama yang sama. Variabelnya akan memegang nilai terakhir.
 
-You cannot do this with `let` or `const` since they're block-scoped.
+Anda tidak dapat melakukan ini dengan `let` atau `const` karena mereka block-scoped.
 
 </p>
 </details>
@@ -778,7 +778,7 @@ console.log(obj);
 
 #### Jawaban: C
 
-If you have two keys with the same name, the key will be replaced. It will still be in its first position, but with the last specified value.
+Jika anda memiliki dua kunci dengan nama yang sama, kunci akan diganti. Ini masih dalam posisi pertama, tetapi dengan nilai terakhir yang ditentukan.
 
 </p>
 </details>
@@ -822,7 +822,7 @@ for (let i = 1; i < 5; i++) {
 
 #### Jawaban: C
 
-The `continue` statement skips an iteration if a certain condition returns `true`.
+Pernyataan `continue` melewatkan iterasi jika kondisi tertentu mengembalikan `true`.
 
 </p>
 </details>
@@ -851,7 +851,7 @@ name.giveLydiaPizza();
 
 #### Jawaban: A
 
-`String` is a built-in constructor, which we can add properties to. I just added a method to its prototype. Primitive strings are automatically converted into a string object, generated by the string prototype function. So, all strings (string objects) have access to that method!
+`String` adalah konstruksi dibangun, yang dapat kita tambahkan properti ke. Aku hanya menambahkan metode ke prototipe. String primitif string secara otomatis dikonversi menjadi objek string, dihasilkan oleh fungsi prototipe string. Jadi, semua string (objek string) memiliki akses ke metode itu!
 
 </p>
 </details>
@@ -914,31 +914,31 @@ baz();
 
 #### Jawaban: B
 
-We have a `setTimeout` function and invoked it first. Yet, it was logged last.
+Kami memiliki fungsi `setTimeout` dan dimohonkan terlebih dahulu. Namun, itu login terakhir.
 
-This is because in browsers, we don't just have the runtime engine, we also have something called a `WebAPI`. The `WebAPI` gives us the `setTimeout` function to start with, and for example the DOM.
+Hal ini karena di browsers, kita tidak hanya memiliki mesin waktu runtime, kita juga memiliki sesuatu yang disebut `WebAPI`. `WebAPI` memberi kita fungsi `setTimeout`, dan misalnya DOM.
 
-After the _callback_ is pushed to the WebAPI, the `setTimeout` function itself (but not the callback!) is popped off the stack.
+Setelah _callback_ (panggilan balik) didorong ke WebAPI, fungsi `setTimeout` itu sendiri (tetapi tidak panggilan balik) muncul dari tumpukan.
 
 <img src="https://i.imgur.com/X5wsHOg.png" width="200">
 
-Now, `foo` gets invoked, and `"First"` is being logged.
+Sekarang, `foo` mendapat hambatan, dan `"First"` yang login.
 
 <img src="https://i.imgur.com/Pvc0dGq.png" width="200">
 
-`foo` is popped off the stack, and `baz` gets invoked. `"Third"` gets logged.
+`foo` yang muncul dari tumpukan, dan `baz` mendapat perantara. `"Third"` akan login.
 
 <img src="https://i.imgur.com/WhA2bCP.png" width="200">
 
-The WebAPI can't just add stuff to the stack whenever it's ready. Instead, it pushes the callback function to something called the _queue_.
+WebAPI tidak bisa hanya menambahkan barang-barang ke tumpukan setiap kali siap. Sebaliknya, ia mendorong fungsi panggilan balik ke sesuatu yang disebut _queue_ (antrian).
 
 <img src="https://i.imgur.com/NSnDZmU.png" width="200">
 
-This is where an event loop starts to work. An **event loop** looks at the stack and task queue. If the stack is empty, it takes the first thing on the queue and pushes it onto the stack.
+Di sinilah serangkaian acara mulai bekerja. Sebuah **event loop** (putaran kejadian/peristiwa) melihat tumpukan dan antrian tugas. Jika tumpukan kosong, itu mengambil hal pertama pada antrian dan mendorong ke tumpukan.
 
 <img src="https://i.imgur.com/uyiScAI.png" width="200">
 
-`bar` gets invoked, `"Second"` gets logged, and it's popped off the stack.
+`bar` bisa dipanggil, `"Second"` akan login, dan itu muncul dari tumpukan.
 
 </p>
 </details>
@@ -1770,9 +1770,10 @@ console.log(myCounter);
 
 #### Jawaban: C
 
-An imported module is _read-only_: you cannot modify the imported module. Only the module that exports them can change its value.
+Modul yang diimpor adalah _read-only_: Anda tidak dapat mengubah modul yang diimpor. Hanya modul yang mengekspornya yang dapat mengubah nilainya.
 
-When we try to increment the value of `myCounter`, it throws an error: `myCounter` is read-only and cannot be modified.
+Ketika kita mencoba untuk menambah nilai `myCounter`, itu melemparkan kesalahan: `myCounter` adalah baca-saja dan tidak dapat dimodifikasi.
+
 
 </p>
 </details>
@@ -2685,8 +2686,8 @@ Variables with the `const` and `let` keyword are _block-scoped_. A block is anyt
 
 ```javascript
 fetch('https://www.website.com/api/user/1')
-  .then(res => res.json())
-  .then(res => console.log(res));
+        .then(res => res.json())
+        .then(res => console.log(res))
 ```
 
 - A: The result of the `fetch` method.
@@ -3412,7 +3413,7 @@ JavaScript interprets (or unboxes) statements. When we use bracket notation, it 
 
 ---
 
-###### 107. What's its value?
+###### 107. Apakah hasil nilai dibawah ini ?
 
 ```javascript
 console.log('❤️' === '❤️');
@@ -3426,24 +3427,24 @@ console.log('❤️' === '❤️');
 
 #### Jawaban: A
 
-Under the hood, emojis are unicodes. The unicodes for the heart emoji is `"U+2764 U+FE0F"`. These are always the same for the same emojis, so we're comparing two equal strings to each other, which returns true.
+Di belakang layar, emoji adalah sebuah unicode. Unicode untuk emoji hati adalah `"U+2764 U+FE0F"`. Keduanya akan selalu sama untuk emoji yang sama, jadi sebetulnya kita telah membandingkan dua string yang sama satu sama lain, yang mana akan menghasilkan true.
 
 </p>
 </details>
 
 ---
 
-###### 108. Which of these methods modifies the original array?
+###### 108. Manakah metode berikut yang akan memodifikasi array aslinya?
 
 ```javascript
-const emojis = ['✨', '🥑', '😍'];
+const emojis = ["✨", "🥑", "😍"];
 
-emojis.map(x => x + '✨');
-emojis.filter(x => x !== '🥑');
-emojis.find(x => x !== '🥑');
-emojis.reduce((acc, cur) => acc + '✨');
-emojis.slice(1, 2, '✨');
-emojis.splice(1, 2, '✨');
+emojis.map((x) => x + "✨");
+emojis.filter((x) => x !== "🥑");
+emojis.find((x) => x !== "🥑");
+emojis.reduce((acc, cur) => acc + "✨");
+emojis.slice(1, 2, "✨");
+emojis.splice(1, 2, "✨");
 ```
 
 - A: `All of them`
@@ -3456,9 +3457,9 @@ emojis.splice(1, 2, '✨');
 
 #### Jawaban: D
 
-With `splice` method, we modify the original array by deleting, replacing or adding elements. In this case, we removed 2 items from index 1 (we removed `'🥑'` and `'😍'`) and added the ✨ emoji instead.
+Metode `splice`, akan memodifikasi array aslinya dengan cara menghapus, mengganti atau menambahkan elemen. Dalam kasus ini, kami menghapus 2 item dari indeks 1 (kami menghapus `'🥑'` dan`' 😍'`) dan menambahkan emoji ✨ sebagai penggantinya.
 
-`map`, `filter` and `slice` return a new array, `find` returns an element, and `reduce` returns a reduced value.
+`map`,` filter` dan `slice` akan mengembalikan array baru,` find` akan mengembalikan elemen yang dicari, dan `reduce` akan mengembalikan nilai yang telah dikurangi.
 
 </p>
 </details>
@@ -4597,9 +4598,9 @@ obj.next(); // { value: "Lisa", done: false }
 
 #### Jawaban: B
 
-In order to iterate over the `members` in each element in the `teams` array, we need to pass `teams[i].members` to the `getMembers` generator function. The generator function returns a generator object. In order to iterate over each element in this generator object, we need to use `yield*`.
+Untuk melakukan pengulangan pada `members` dalam setiap elemen array `tim`, kita perlu melemparkan `tim[i].members` ke fungsi generator `getMembers`. Fungsi generator akan mengembalikan objek hasil generator. Untuk mengulang setiap elemen dalam objek generator ini, kita perlu menggunakan `yield*`.
 
-If we would've written `yield`, `return yield`, or `return`, the entire generator function would've gotten returned the first time we called the `next` method.
+Jika kita telah menulis `yield`, `return yield`, atau `return`, maka seluruh fungsi generator akan dikembalikan saat pertama kali kita memanggil metode `next`.
 
 </p>
 </details>
@@ -4920,14 +4921,14 @@ Mencatat `animals[dog]`, atau sebenarnya `animals["object Object"]` karena mengo
 
 ```javascript
 const user = {
-	email: "my@email.com",
-	updateEmail: email => {
-		this.email = email
-	}
-}
+        email: "my@email.com",
+        updateEmail: (email) => {
+          this.email = email;
+        },
+};
 
-user.updateEmail("new@email.com")
-console.log(user.email)
+user.updateEmail("new@email.com");
+console.log(user.email);
 ```
 
 - A: `my@email.com`
@@ -4941,6 +4942,7 @@ console.log(user.email)
 #### Jawaban: A
 
 Fungsi `updateEmail` adalah fungsi panah, dan tidak terikat ke objek `user`. Artinya, kata kunci `this` tidak merujuk ke objek `user`, tetapi merujuk pada cakupan global dalam kasus ini. Nilai `email` dalam objek `user` tidak diperbarui. Saat memasukkan nilai `user.email`, nilai asli `my@email.com` akan dikembalikan.
+
 </p>
 </details>
 
@@ -4955,9 +4957,9 @@ const promise3 = Promise.reject('Third')
 const promise4 = Promise.resolve('Fourth')
 
 const runPromises = async () => {
-	const res1 = await Promise.all([promise1, promise2])
-	const res2  = await Promise.all([promise3, promise4])
-	return [res1, res2]
+      const res1 = await Promise.all([promise1, promise2]);
+      const res2 = await Promise.all([promise3, promise4]);
+      return [res1, res2];
 }
 
 runPromises()
@@ -4982,16 +4984,19 @@ Metode `Promise.all` menjalankan promise yang diberikan secara paralel. Jika sat
 
 ---
 
-###### <a name=20200612></a>153.Berapa nilai `method` untuk mencatat `{name: "Lydia", age: 22}`?
+###### 153.Berapa nilai `method` untuk mencatat `{name: "Lydia", age: 22}`?
 
 ```javascript
-const keys = ["name", "age"]
-const values = ["Lydia", 22]
+const keys = ["name", "age"];
+const values = ["Lydia", 22];
 
-const method = /* ?? */
-Object[method](keys.map((_, i) => {
-	return [keys[i], values[i]]
-})) // { name: "Lydia", age: 22 }
+const method =
+  /* ?? */
+  Object[method](
+    keys.map((_, i) => {
+      return [keys[i], values[i]];
+    })
+  ); // { name: "Lydia", age: 22 }
 ```
 
 - A: `entries`
@@ -5035,11 +5040,46 @@ console.log(member)
 - C: `{ email: "my@email.com", address: {} }`
 - D: `{ email: "my@email.com", address: undefined }`
 
-<details><summary><b>Answer</b></summary>
+<details><summary><b>Jawaban</b></summary>
 <p>
 
-#### Answer: C
+#### Jawaban: C
 
-Nilai default dari `address` adalah objek kosong `{}`. Ketika kita mengatur variable `member` sama dengan objek yang dikembalikan oleh fungsi `createMember`, kita tidak meneruskan nilai untuk address, yang berarti bahwa nilai address adalah objek kosong secara default `{}`. Objek kosong adalah nilai kebenaran, yang berarti kondisi `address ? address : null` mengembalikan `true`. Nilai address adalah objek kosong`{}`.
+Nilai default dari `address` adalah objek kosong `{}`. Saat kita menyetel variabel `member` sama dengan objek yang dikembalikan oleh fungsi `createMember`, kita tidak meneruskan nilai untuk address, yang berarti bahwa nilai address adalah objek kosong default `{}`.Objek kosong adalah nilai sebenarnya, yang berarti kondisi `address ? address: null` mengembalikan `true`. Nilai address adalah objek kosong `{}`.
+
+</p>
+</details>
+
+---
+
+###### 155. Apa hasilnya?
+
+```javascript
+let randomValue = { name: "Lydia" }
+randomValue = 23
+
+if (!typeof randomValue === "string") {
+	console.log("It's not a string!")
+} else {
+	console.log("Yay it's a string!")
+}
+```
+
+- A: `It's not a string!`
+- B: `Yay it's a string!`
+- C: `TypeError`
+- D: `undefined`
+
+<details><summary><b>Jawaban</b></summary>
+<p>
+
+#### Jawaban: B
+
+Kondisi dalam pernyataan `if` memeriksa apakah nilai dari `!typeof randomValue` sama dengan `"string"`. Operator `!` Mengonversi nilai menjadi nilai boolean. Jika nilainya benar, nilai yang dikembalikan akan menjadi `false`, jika nilainya salah, nilai yang dikembalikan akan menjadi `true`. Dalam kasus ini, nilai yang dikembalikan dari `typeof randomValue` adalah nilai sebenarnya `"string"`, artinya nilai `!typeof randomValue` adalah nilai boolean `false`.
+
+`!typeof randomValue === "string"` selalu mengembalikan false, karena kita sebenarnya memeriksa `false === "string "`. Karena kondisi mengembalikan `false`, blok kode dari pernyataan `else` dijalankan, dan `Yay it's a string!` Akan dicatat.
+
+</p>
+</details>
 
 ---
